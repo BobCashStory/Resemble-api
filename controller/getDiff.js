@@ -1,6 +1,4 @@
-const puppeteer = require('resemblejs');
 const compareImages = require("resemblejs/compareImages");
-const fs = require("mz/fs");
 
 const defaultOptions = {
         output: {
