@@ -17,10 +17,16 @@ app.get('/', function(_, res) {
 app.post('/diff', async function(req, res) {
   try {
     const params = req.body;
-    const result = await getDiff(params);
+    if (!req.files.image_1 || !req.files.image_2) {
+       res.status(400).send(`Error missing file image_1 or image_2`);
+    }
+    if (!params) {
+       res.status(400).send(`Error missing req.body or params`);
+    }  
+    const result = await getDiff(req.files.image_1, req.files.image_2,params);
     res.attachment(result.diff).status(200).send(result.score);
   } catch (e) {
-    res.status(400).send(`Error while rendering the screenshot: ${e.message}`)
+    res.status(400).send(`Error while rendering the diff: ${e.message}`)
   }
 });
 
