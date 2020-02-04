@@ -26,7 +26,7 @@ async function getDiff(image_1, image_2, options = defaultOptions) {
         options
     );
     return {
-    diffBuffer: data.getBuffer(), 
+    diffImage: data.getBuffer().toString(), 
     score: {
             misMatchPercentage: data.misMatchPercentage, 
             isSameDimensions: data.isSameDimensions,
