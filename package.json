@@ -1,0 +1,14 @@
+{
+  "name": "diff_service",
+  "version": "1.0.0",
+  "private": false,
+  "description": "API to render diff image thanks to rasemble.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "author": "Cashstory",
+  "dependencies": {
+    "express": "^4.17.1",
+    "resemblejs": "^3.2.3"
+  }
+}
