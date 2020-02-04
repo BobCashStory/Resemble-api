@@ -26,12 +26,12 @@ async function getDiff(image_1, image_2, options = defaultOptions) {
         options
     );
     return {
-    diff: data.getBuffer(), 
+    diffBuffer: data.getBuffer(), 
     score: {
-        misMatchPercentage: data.misMatchPercentage, 
-        isSameDimensions: data.isSameDimensions,
-        dimensionDifference: data.dimensionDifference
-      }
+            misMatchPercentage: data.misMatchPercentage, 
+            isSameDimensions: data.isSameDimensions,
+            dimensionDifference: data.dimensionDifference
+        }
     };
 }
 
