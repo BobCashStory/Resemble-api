@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  Analyse and compare images with Javascript and HTML5. <a href="http://rsmbl.github.io/Resemble.js/">More info & Resemble.js Demo</a>. Compatible with Node.js >8.
+  Analyse and compare images with Javascript and HTML5. <a href="https://github.com/rsmbl/Resemble.js">Read the doc here</a>. Compatible with Node.js >8.
 </p>
 
 <hr />
@@ -26,6 +26,29 @@ POST on `/diff` your two images named `image_1` and `image_2` in option in the b
 curl --location --request POST 'localhost:3000/diff' \
 --form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
 --form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png'
+```
+or POST with specific options:
+```
+curl --location --request POST 'localhost:3000/diff' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
+--form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png' \
+--form 'options={
+      "output": {
+          "errorColor": {
+              "red": 255,
+              "green": 0,
+              "blue": 255
+          },
+          "errorType": "movement",
+          "transparency": 0.3,
+          "largeImageThreshold": 1200,
+          "useCrossOrigin": false,
+          "outputDiff": true
+      },
+      "scaleToSameSize": true,
+      "ignore": "antialiasing"
+  }'
 ```
 
 the api will return you a JSON object.
