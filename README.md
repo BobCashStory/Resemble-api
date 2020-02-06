@@ -24,8 +24,8 @@ POST on `/diff` your two images named `image_1` and `image_2` in option in the b
 
 ```
 curl --location --request POST 'localhost:3000/diff' \
---form 'image_1=@/Users/martindonadieu/Downloads/accounting_101_Evolution_du_CA.png' \
---form 'image_2=@/Users/martindonadieu/Downloads/accounting_101_Evolution_du_CA_1.png'
+--form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
+--form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png'
 ```
 
 the api will return you a JSON object.
