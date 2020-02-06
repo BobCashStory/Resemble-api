@@ -33,7 +33,7 @@ app.post('/diff', async function(req, res) {
       return res.status(400).send(`Error missing req.body or params`);
     }
     const result = await getDiff(req.files.image_1.data, req.files.image_2.data, options);
-    if (params.onlyDiff) {
+    if (params.only && params.only === 'image') {
       const base64Data = result.diffImage.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
       const img = Buffer.from(base64Data, 'base64');
       res.writeHead(200, {
@@ -41,6 +41,9 @@ app.post('/diff', async function(req, res) {
         'Content-Length': img.length
       });
       return res.end(img); 
+    }
+    if (params.only && params.only === 'score') {
+      return res.status(200).send(result.score);
     }
     res.status(200).send(result);
   } catch (e) {

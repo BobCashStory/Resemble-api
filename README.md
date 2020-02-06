@@ -79,14 +79,35 @@ like this
     }
 }
 ```
+### Only option
 
-Or just ask for the diff image with onlyDiff :
+Just ask for the diff score with only=score :
 ```
 curl --location --request POST 'localhost:3000/diff' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
 --form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png' \
---form 'onlyDiff=true'
+--form 'only=score'
+```
+and you get :
+```
+{
+    "misMatchPercentage": "0.14",
+    "isSameDimensions": true,
+    "dimensionDifference": {
+        "width": 0,
+        "height": 0
+    }
+}
+```
+
+Just ask for the diff image with only=image :
+```
+curl --location --request POST 'localhost:3000/diff' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
+--form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png' \
+--form 'only=image'
 ```
 and you get :
 
