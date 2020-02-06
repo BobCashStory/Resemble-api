@@ -38,7 +38,7 @@ curl --location --request POST 'localhost:3000/diff' \
 --form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
 --form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png'
 ```
-or POST with specific options:
+or POST with specific options (optional):
 ```
 curl --location --request POST 'localhost:3000/diff' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -80,3 +80,14 @@ like this
 }
 ```
 
+Or just ask for the diff image with onlyDiff :
+```
+curl --location --request POST 'localhost:3000/diff' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--form 'image_1=@/Users/martind/Downloads/accounting_101_Evolution_du_CA.png' \
+--form 'image_2=@/Users/martind/Downloads/accounting_101_Evolution_du_CA_1.png' \
+--form 'onlyDiff=true'
+```
+and you get :
+
+![Diff Image exemple](/diff_exemple.png)
