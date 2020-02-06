@@ -18,6 +18,17 @@
 
 Clone this repo or use our docker image : `cashstory/resemble-api`
 
+### Docker 
+
+Run the docker machine the service is serve on the port 3000 .
+
+### Local
+
+do `npm i` 
+and then `npm start` make it serve on port 3000 .
+
+### Test it
+
 the API is pretty simple :
 
 POST on `/diff` your two images named `image_1` and `image_2` in option in the body you can use all options of Rasemble.js
