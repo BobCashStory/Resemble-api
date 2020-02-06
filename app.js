@@ -17,13 +17,22 @@ app.get('/', function(_, res) {
 app.post('/diff', async function(req, res) {
   try {
     const params = req.body;
+    let options = null;
+    if (params.options) {
+      try {
+        options = JSON.parse(params.options);
+      } catch (err) {
+        console.error(`Error parsing options`, err);
+        return res.status(400).send(`Error parsing options`);
+      }
+    }
     if (!req.files.image_1 || !req.files.image_2) {
-      res.status(400).send(`Error missing file image_1 or image_2`);
+      return res.status(400).send(`Error missing file image_1 or image_2`);
     }
     if (!params) {
-      res.status(400).send(`Error missing req.body or params`);
+      return res.status(400).send(`Error missing req.body or params`);
     }
-    const result = await getDiff(req.files.image_1.data, req.files.image_2.data, params);
+    const result = await getDiff(req.files.image_1.data, req.files.image_2.data, options);
     res.status(200).send(result);
   } catch (e) {
     res.status(400).send(`Error while rendering the diff: ${e.message}`)
